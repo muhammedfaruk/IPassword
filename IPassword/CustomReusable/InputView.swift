@@ -12,6 +12,7 @@ struct InputView: View {
     @Binding var input: String
     let placeholder: String
     @State var isActive: Bool = false
+    var activeColor: Color = .blue
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -22,7 +23,7 @@ struct InputView: View {
             
             ZStack {
                 RoundedRectangle(cornerRadius: 8)
-                    .strokeBorder( isActive ? Color.blue : Color.gray, lineWidth: 1)
+                    .strokeBorder( activeColor, lineWidth: 1)
                     .frame(height: 50, alignment: .center)
                     .foregroundColor(.clear)
                 HStack {
