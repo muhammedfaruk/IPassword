@@ -8,33 +8,52 @@
 import SwiftUI
 
 struct MainView: View {
+    
+    @State var openSheet: Bool = false
+    
     var body: some View {
         VStack(alignment: .leading) {
-            Text("My_Accounts")
-                .foregroundColor(.white)
-                .font(.title)
-                .bold()
-                .padding(.leading)
+            
+            HStack {
+                Text("My_Accounts")
+                    .foregroundColor(.white)
+                    .font(.title)
+                    .bold()
+                
+                Spacer()
+                Button {
+                    openSheet.toggle()
+                } label: {
+                    Image(systemName: "plus")
+                        .foregroundColor(.white)
+                        .font(.title)
+                }
+
+            }
+            .padding(.horizontal)
             
             ScrollView {
                 VStack {
                     ForEach(0...3, id: \.self) { i in
-                        PassRow()
+                        AccountRowView()
                     }
                 }
             }
         }
         .padding(.top, 74)
-        .background(Color("rowBack"))
+        .background(Color("back"))
         .ignoresSafeArea()
+        .sheet(isPresented: $openSheet) {
+            Color.white
+        }
     }
 }
 
-struct PassRow: View {
+struct AccountRowView: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 8)
-                .foregroundColor(Color("back"))
+                .foregroundColor(Color("rowBack"))
             HStack(spacing: 25) {
                 ZStack {
                     Circle()
