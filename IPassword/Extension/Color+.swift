@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 extension Color {
     static let labelColor = Color(UIColor.label)

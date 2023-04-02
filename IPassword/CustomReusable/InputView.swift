@@ -36,7 +36,7 @@ struct InputView: View {
                                 }                                
                             }
                         )
-                    .foregroundColor(.white)
+                    .foregroundColor(.labelColor)
                     .padding(.leading, 8)
                                         
                 }

@@ -11,6 +11,11 @@ struct MainView: View {
     
     @State var openSheet: Bool = false
     
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        animation: .default)
+    private var items: FetchedResults<Item>
+    
     var body: some View {
         VStack(alignment: .leading) {
             
@@ -31,11 +36,11 @@ struct MainView: View {
 
             }
             .padding(.horizontal)
-            
+                      
             ScrollView {
                 VStack(spacing: 20) {
-                    ForEach(0...3, id: \.self) { i in
-                        AccountRowView()
+                    ForEach(items) { i in
+                        AccountRowView(circleColor: .red, username: i.username ?? "", circleChar: i.character ?? "" )
                     }
                 }
                 .padding(.top)
@@ -51,26 +56,33 @@ struct MainView: View {
 }
 
 struct AccountRowView: View {
+    
+    let circleColor: Color
+    let username: String
+    let circleChar: String
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 8)
                 .foregroundColor(Color("rowGray"))
-                .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 3)
+                .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 3)
             
             HStack(spacing: 25) {
                 ZStack {
                     Circle()
-                        .foregroundColor(.yellow)
-                    Text("A")
+                        .foregroundColor(circleColor)
+                    
+                    Text(circleChar)
                         .bold()
                 }
                 .padding(.leading, 8)
                 .frame(height: 50)
                 
-                Text("Account Name")
+                Text(username)
                     .foregroundColor(.labelColor)
                     .font(.title3)
                     .bold()
+                
                 Spacer()
             }
         }
