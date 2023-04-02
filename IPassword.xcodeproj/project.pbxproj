@@ -13,6 +13,9 @@
 		59EBCE4329D993C90074EB9D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59EBCE4229D993C90074EB9D /* Preview Assets.xcassets */; };
 		59EBCE4529D993C90074EB9D /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EBCE4429D993C90074EB9D /* Persistence.swift */; };
 		59EBCE4829D993C90074EB9D /* IPassword.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 59EBCE4629D993C90074EB9D /* IPassword.xcdatamodeld */; };
+		59EBCE4F29D9949F0074EB9D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EBCE4E29D9949F0074EB9D /* MainView.swift */; };
+		59EBCE5229D9964E0074EB9D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 59EBCE5429D9964E0074EB9D /* Localizable.strings */; };
+		59EBCE5729D996970074EB9D /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EBCE5629D996970074EB9D /* String+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,10 @@
 		59EBCE4229D993C90074EB9D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		59EBCE4429D993C90074EB9D /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		59EBCE4729D993C90074EB9D /* IPassword.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IPassword.xcdatamodel; sourceTree = "<group>"; };
+		59EBCE4E29D9949F0074EB9D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		59EBCE5329D9964E0074EB9D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		59EBCE5529D996510074EB9D /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		59EBCE5629D996970074EB9D /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,12 +62,15 @@
 		59EBCE3A29D993C80074EB9D /* IPassword */ = {
 			isa = PBXGroup;
 			children = (
+				59EBCE5829D996E90074EB9D /* Extension */,
 				59EBCE3B29D993C80074EB9D /* IPasswordApp.swift */,
 				59EBCE3D29D993C80074EB9D /* ContentView.swift */,
 				59EBCE3F29D993C90074EB9D /* Assets.xcassets */,
 				59EBCE4429D993C90074EB9D /* Persistence.swift */,
 				59EBCE4629D993C90074EB9D /* IPassword.xcdatamodeld */,
 				59EBCE4129D993C90074EB9D /* Preview Content */,
+				59EBCE4E29D9949F0074EB9D /* MainView.swift */,
+				59EBCE5429D9964E0074EB9D /* Localizable.strings */,
 			);
 			path = IPassword;
 			sourceTree = "<group>";
@@ -71,6 +81,14 @@
 				59EBCE4229D993C90074EB9D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		59EBCE5829D996E90074EB9D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				59EBCE5629D996970074EB9D /* String+.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -115,6 +133,7 @@
 			knownRegions = (
 				en,
 				Base,
+				tr,
 			);
 			mainGroup = 59EBCE2F29D993C80074EB9D;
 			productRefGroup = 59EBCE3929D993C80074EB9D /* Products */;
@@ -132,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59EBCE4329D993C90074EB9D /* Preview Assets.xcassets in Resources */,
+				59EBCE5229D9964E0074EB9D /* Localizable.strings in Resources */,
 				59EBCE4029D993C90074EB9D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -145,12 +165,26 @@
 			files = (
 				59EBCE4529D993C90074EB9D /* Persistence.swift in Sources */,
 				59EBCE3E29D993C80074EB9D /* ContentView.swift in Sources */,
+				59EBCE5729D996970074EB9D /* String+.swift in Sources */,
 				59EBCE4829D993C90074EB9D /* IPassword.xcdatamodeld in Sources */,
+				59EBCE4F29D9949F0074EB9D /* MainView.swift in Sources */,
 				59EBCE3C29D993C80074EB9D /* IPasswordApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		59EBCE5429D9964E0074EB9D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				59EBCE5329D9964E0074EB9D /* en */,
+				59EBCE5529D996510074EB9D /* tr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		59EBCE4929D993C90074EB9D /* Debug */ = {
@@ -283,6 +317,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -312,6 +347,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
