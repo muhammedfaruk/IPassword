@@ -152,7 +152,7 @@ struct AddAccountView: View {
         withAnimation {
             let newItem = Item(context: viewContext)
             newItem.character = circleChar
-            newItem.colorHex = circleChar
+            newItem.colorHex = circleColor.toHex() ?? "3478F6"
             newItem.username = username
             newItem.pass = password
             

@@ -40,7 +40,7 @@ struct MainView: View {
             ScrollView {
                 VStack(spacing: 20) {
                     ForEach(items) { i in
-                        AccountRowView(circleColor: .red, username: i.username ?? "", circleChar: i.character ?? "" )
+                        AccountRowView(circleColor: Color(hex: i.colorHex ?? "3478F6"), username: i.username ?? "", circleChar: i.character ?? "" )
                     }
                 }
                 .padding(.top)
