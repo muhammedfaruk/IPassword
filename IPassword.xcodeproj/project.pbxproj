@@ -18,6 +18,8 @@
 		59EBCE5729D996970074EB9D /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EBCE5629D996970074EB9D /* String+.swift */; };
 		59F8BAD629D9A4CB00E86537 /* SuperTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F8BAD529D9A4CB00E86537 /* SuperTextField.swift */; };
 		59F8BAD829D9A5BE00E86537 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F8BAD729D9A5BE00E86537 /* InputView.swift */; };
+		59F8BADA29D9AF2900E86537 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F8BAD929D9AF2900E86537 /* Color+.swift */; };
+		59F8BADD29D9B02500E86537 /* AddAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F8BADC29D9B02500E86537 /* AddAccountView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		59EBCE5629D996970074EB9D /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		59F8BAD529D9A4CB00E86537 /* SuperTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperTextField.swift; sourceTree = "<group>"; };
 		59F8BAD729D9A5BE00E86537 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		59F8BAD929D9AF2900E86537 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
+		59F8BADC29D9B02500E86537 /* AddAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,7 @@
 		59EBCE3A29D993C80074EB9D /* IPassword */ = {
 			isa = PBXGroup;
 			children = (
+				59F8BADB29D9B00F00E86537 /* View */,
 				59F8BAD429D9A4B800E86537 /* CustomReusable */,
 				59EBCE5829D996E90074EB9D /* Extension */,
 				59EBCE3B29D993C80074EB9D /* IPasswordApp.swift */,
@@ -74,7 +79,6 @@
 				59EBCE4429D993C90074EB9D /* Persistence.swift */,
 				59EBCE4629D993C90074EB9D /* IPassword.xcdatamodeld */,
 				59EBCE4129D993C90074EB9D /* Preview Content */,
-				59EBCE4E29D9949F0074EB9D /* MainView.swift */,
 				59EBCE5429D9964E0074EB9D /* Localizable.strings */,
 			);
 			path = IPassword;
@@ -92,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				59EBCE5629D996970074EB9D /* String+.swift */,
+				59F8BAD929D9AF2900E86537 /* Color+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -103,6 +108,15 @@
 				59F8BAD729D9A5BE00E86537 /* InputView.swift */,
 			);
 			path = CustomReusable;
+			sourceTree = "<group>";
+		};
+		59F8BADB29D9B00F00E86537 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				59EBCE4E29D9949F0074EB9D /* MainView.swift */,
+				59F8BADC29D9B02500E86537 /* AddAccountView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +192,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				59EBCE4529D993C90074EB9D /* Persistence.swift in Sources */,
+				59F8BADA29D9AF2900E86537 /* Color+.swift in Sources */,
+				59F8BADD29D9B02500E86537 /* AddAccountView.swift in Sources */,
 				59F8BAD629D9A4CB00E86537 /* SuperTextField.swift in Sources */,
 				59EBCE3E29D993C80074EB9D /* ContentView.swift in Sources */,
 				59EBCE5729D996970074EB9D /* String+.swift in Sources */,

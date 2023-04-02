@@ -16,7 +16,7 @@ struct MainView: View {
             
             HStack {
                 Text("My_Accounts")
-                    .foregroundColor(.white)
+                    .foregroundColor(.labelColor)
                     .font(.title)
                     .bold()
                 
@@ -25,7 +25,7 @@ struct MainView: View {
                     openSheet.toggle()
                 } label: {
                     Image(systemName: "plus")
-                        .foregroundColor(.white)
+                        .foregroundColor(.labelColor)
                         .font(.title)
                 }
 
@@ -33,11 +33,12 @@ struct MainView: View {
             .padding(.horizontal)
             
             ScrollView {
-                VStack {
+                VStack(spacing: 20) {
                     ForEach(0...3, id: \.self) { i in
                         AccountRowView()
                     }
                 }
+                .padding(.top)
             }
         }
         .padding(.top, 74)
@@ -53,7 +54,9 @@ struct AccountRowView: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 8)
-                .foregroundColor(Color("rowBack"))
+                .foregroundColor(Color("rowGray"))
+                .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 3)
+            
             HStack(spacing: 25) {
                 ZStack {
                     Circle()
@@ -65,7 +68,7 @@ struct AccountRowView: View {
                 .frame(height: 50)
                 
                 Text("Account Name")
-                    .foregroundColor(.white)
+                    .foregroundColor(.labelColor)
                     .font(.title3)
                     .bold()
                 Spacer()
@@ -76,34 +79,6 @@ struct AccountRowView: View {
     }
 }
 
-
-struct AddAccountView: View {
-    
-    @State var username: String = ""
-    @State var password: String = ""
-    
-    var body: some View {
-        ZStack {
-            Color("back")
-            
-            VStack {
-                Circle()
-                    .foregroundColor(.white)
-                    .frame(width: 50, height: 50, alignment: .center)
-                
-                VStack(spacing: 24) {
-                    InputView(title: "Username", input: $username, placeholder: "Please_add_your_username")
-                    .padding(.horizontal)
-                    InputView(title: "Password", input: $username, placeholder: "Please_add_your_username")
-                    .padding(.horizontal)
-                }
-                Spacer()
-            }
-            
-        }
-        .ignoresSafeArea()
-    }
-}
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {

@@ -16,7 +16,7 @@ struct InputView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(title)
-                .foregroundColor(.white)
+                .foregroundColor(.labelColor)
                 .bold()
                 .font(.title2)
             
