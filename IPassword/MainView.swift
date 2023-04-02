@@ -44,7 +44,7 @@ struct MainView: View {
         .background(Color("back"))
         .ignoresSafeArea()
         .sheet(isPresented: $openSheet) {
-            Color.white
+            AddAccountView()
         }
     }
 }
@@ -59,6 +59,7 @@ struct AccountRowView: View {
                     Circle()
                         .foregroundColor(.yellow)
                     Text("A")
+                        .bold()
                 }
                 .padding(.leading, 8)
                 .frame(height: 50)
@@ -76,8 +77,37 @@ struct AccountRowView: View {
 }
 
 
+struct AddAccountView: View {
+    
+    @State var username: String = ""
+    @State var password: String = ""
+    
+    var body: some View {
+        ZStack {
+            Color("back")
+            
+            VStack {
+                Circle()
+                    .foregroundColor(.white)
+                    .frame(width: 50, height: 50, alignment: .center)
+                
+                VStack(spacing: 24) {
+                    InputView(title: "Username", input: $username, placeholder: "Please_add_your_username")
+                    .padding(.horizontal)
+                    InputView(title: "Password", input: $username, placeholder: "Please_add_your_username")
+                    .padding(.horizontal)
+                }
+                Spacer()
+            }
+            
+        }
+        .ignoresSafeArea()
+    }
+}
+
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
     }
 }
+
