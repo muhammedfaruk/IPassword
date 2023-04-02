@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AddAccountView: View {
+    @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
@@ -164,6 +165,8 @@ struct AddAccountView: View {
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
+            
+            presentationMode.wrappedValue.dismiss()
         }
     }
 
