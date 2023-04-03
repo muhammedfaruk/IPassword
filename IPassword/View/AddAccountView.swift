@@ -147,6 +147,7 @@ struct AddAccountView: View {
                     
 
                 }
+                .padding(.bottom)
             }
             .padding(.top, 24)
         }
@@ -157,6 +158,7 @@ struct AddAccountView: View {
     private func addItem() {
         withAnimation {
             let newItem = Item(context: viewContext)
+            newItem.timestamp = Date()
             newItem.character = circleChar
             newItem.colorHex = circleColor.toHex() ?? "3478F6"
             newItem.username = username

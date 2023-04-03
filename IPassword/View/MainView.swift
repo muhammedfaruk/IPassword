@@ -17,41 +17,69 @@ struct MainView: View {
     private var items: FetchedResults<Item>
     
     var body: some View {
-        VStack(alignment: .leading) {
-            
-            HStack {
-                Text("All Records".localized())
-                    .foregroundColor(.labelColor)
-                    .font(.title)
-                    .bold()
+        ZStack {
+            Color("back")
+            VStack(alignment: .center) {
                 
-                Spacer()
-                Button {
-                    openSheet.toggle()
-                } label: {
-                    Image(systemName: "plus")
+                HStack(alignment: .top) {
+                    Text("All Records".localized())
                         .foregroundColor(.labelColor)
                         .font(.title)
-                }
-
-            }
-            .padding(.horizontal)
-                      
-            ScrollView {
-                VStack(spacing: 20) {
-                    ForEach(items) { i in
-                        AccountRowView(item: i)
+                        .bold()
+                    
+                    Spacer()
+                    if items.count != 0 {
+                        Button {
+                            openSheet.toggle()
+                        } label: {
+                            Image(systemName: "plus")
+                                .foregroundColor(.labelColor)
+                                .font(.title)
+                        }
                     }
                 }
-                .padding(.top)
+                .padding(.horizontal)
+                
+                Spacer()
+                if items.count == 0 {
+                    VStack(alignment: .center) {
+                        
+                        Button {
+                            openSheet.toggle()
+                        } label: {
+                            ZStack {
+                                Circle()
+                                    .foregroundColor(Color("rowGray"))
+                                    .frame(width: 80, height: 80, alignment: .center)
+                                Image(systemName:"plus")
+                                    .font(.title)
+                                    .foregroundColor(.white)
+                            }
+                        }
+                        
+                        Text("Add Your First Record".localized())
+                            .foregroundColor(.labelColor)
+                            .font(.title)
+                            .multilineTextAlignment(.center)
+                    }
+                    Spacer()
+                }else {
+                    ScrollView {
+                        VStack(spacing: 20) {
+                            ForEach(items) { i in
+                                AccountRowView(item: i)
+                            }
+                        }
+                        .padding(.top)
+                    }
+                }
+            }
+            .padding(.top, 74)
+            .sheet(isPresented: $openSheet) {
+                AddAccountView()
             }
         }
-        .padding(.top, 74)
-        .background(Color("back"))
         .ignoresSafeArea()
-        .sheet(isPresented: $openSheet) {
-            AddAccountView()
-        }
     }
 }
 
