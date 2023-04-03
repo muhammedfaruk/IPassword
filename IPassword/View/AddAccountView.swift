@@ -16,6 +16,8 @@ struct AddAccountView: View {
         animation: .default)
     private var items: FetchedResults<Item>
     
+    var item: Item?
+    
     @State var username: String = ""
     @State var password: String = ""
     @State var title: String = ""
@@ -31,6 +33,7 @@ struct AddAccountView: View {
     var body: some View {
         ZStack {
             Color("back")
+                .ignoresSafeArea()
             ScrollView(.vertical) {
                 VStack(alignment: .leading) {
                     
@@ -151,9 +154,21 @@ struct AddAccountView: View {
             }
             .padding(.top, 24)
         }
-        .ignoresSafeArea()
+        //.ignoresSafeArea()
+        .onAppear {
+            setDataIfNotNil()
+        }
     }
     
+    
+    private func setDataIfNotNil(){
+        if item != nil {
+            title = item?.title ?? ""
+            username = item?.username ?? ""
+            circleChar = item?.character ?? ""
+            circleColor = Color(hex: item?.colorHex ?? "")
+        }
+    }
     
     private func addItem() {
         withAnimation {

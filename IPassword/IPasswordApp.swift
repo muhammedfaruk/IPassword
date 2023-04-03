@@ -13,7 +13,7 @@ struct IPasswordApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MainView()
+            BaseView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)            
         }
     }

@@ -16,6 +16,8 @@ struct MainView: View {
         animation: .default)
     private var items: FetchedResults<Item>
     
+    @State private var selectedIndex: Int?
+    
     var body: some View {
         ZStack {
             Color("back")
@@ -39,21 +41,23 @@ struct MainView: View {
                     }
                 }
                 .padding(.horizontal)
-                
-                Spacer()
+                                
                 if items.count == 0 {
-                    VStack(alignment: .center) {
+                    Spacer()
+                    VStack(alignment: .center, spacing: 20) {
                         
                         Button {
+                            selectedIndex = nil
                             openSheet.toggle()
                         } label: {
                             ZStack {
                                 Circle()
                                     .foregroundColor(Color("rowGray"))
                                     .frame(width: 80, height: 80, alignment: .center)
+                                    .shadow(color: .black.opacity(0.3), radius: 10)
                                 Image(systemName:"plus")
                                     .font(.title)
-                                    .foregroundColor(.white)
+                                    .foregroundColor(.labelColor)
                             }
                         }
                         
@@ -66,8 +70,13 @@ struct MainView: View {
                 }else {
                     ScrollView {
                         VStack(spacing: 20) {
-                            ForEach(items) { i in
-                                AccountRowView(item: i)
+                            ForEach(Array(items.enumerated()), id: \.element) { index, item in
+                                NavigationLink {
+                                    AddAccountView(item: item)
+                                } label: {
+                                    AccountRowView(item: item)
+                                }
+                                .buttonStyle(PlainButtonStyle())
                             }
                         }
                         .padding(.top)
