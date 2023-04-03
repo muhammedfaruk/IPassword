@@ -18,12 +18,13 @@ struct AddAccountView: View {
     
     @State var username: String = ""
     @State var password: String = ""
+    @State var title: String = ""
     
     @State var circleColor: Color = .blue
     @State var circleChar: String = "A"
     
-    let gridItemsForAlphabet = Array(repeating: GridItem(.fixed(45)), count: 2)
-    let gridItems3ForColors = Array(repeating: GridItem(.fixed(45)), count: 3)
+    let gridItemsForAlphabet = Array(repeating: GridItem(.fixed(45)), count: 1)
+    let gridItems3ForColors = Array(repeating: GridItem(.fixed(45)), count: 2)
     
     let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".map({String($0)})
     
@@ -49,11 +50,14 @@ struct AddAccountView: View {
                         }
                         
                         VStack(spacing: 24) {
-                            InputView(title: "Username", input: $username, placeholder: "Please_add_your_username", activeColor: circleColor)
-                            .padding(.horizontal)
-                            InputView(title: "Password", input: $password, placeholder: "Please_add_your_username", activeColor: circleColor)
-                            .padding(.horizontal)
+                            InputView(title: "Title".localized(), input: $title, placeholder: "Please_add_title".localized(), activeColor: circleColor)
+                            
+                            InputView(title: "Email or Username".localized(), input: $username, placeholder: "Please_add_your_username", activeColor: circleColor)
+                            
+                            InputView(title: "Password".localized(), input: $password, placeholder: "Please_add_your_password", activeColor: circleColor)
+                            
                         }
+                        .padding(.horizontal)
                         
                     }
                             
@@ -130,6 +134,7 @@ struct AddAccountView: View {
                                         )
                                     
                                     Text("Save".localized())
+                                        .bold()
                                         .foregroundColor(.labelColor)
                                 }
                                 .frame(height: 50)
@@ -156,12 +161,10 @@ struct AddAccountView: View {
             newItem.colorHex = circleColor.toHex() ?? "3478F6"
             newItem.username = username
             newItem.pass = password
-            
+            newItem.title = title
             do {
                 try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            } catch {                
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
@@ -177,8 +180,6 @@ struct AddAccountView: View {
             do {
                 try viewContext.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }

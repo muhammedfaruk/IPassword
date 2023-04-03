@@ -7,6 +7,12 @@
 */
 
 "My_Accounts" = "My Accounts";
-"Please_add_your_username" = "Please add your username";
-"Add Account" = "Add Account";
+"Please_add_your_username" = "Please add your username or email";
+"Please_add_your_password" = "Please add your password";
+"Add Account" = "Add Record";
 "Save" = "Save";
+"All Records" = "All Records";
+"Please_add_title" = "Please add title";
+"Password" = "Password";
+"Email or Username" = "Email or Username";
+"Title" = "Title";

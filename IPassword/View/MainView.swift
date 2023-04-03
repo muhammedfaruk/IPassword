@@ -20,7 +20,7 @@ struct MainView: View {
         VStack(alignment: .leading) {
             
             HStack {
-                Text("My_Accounts")
+                Text("All Records".localized())
                     .foregroundColor(.labelColor)
                     .font(.title)
                     .bold()
@@ -40,7 +40,7 @@ struct MainView: View {
             ScrollView {
                 VStack(spacing: 20) {
                     ForEach(items) { i in
-                        AccountRowView(circleColor: Color(hex: i.colorHex ?? "3478F6"), username: i.username ?? "", circleChar: i.character ?? "" )
+                        AccountRowView(item: i)
                     }
                 }
                 .padding(.top)
@@ -57,9 +57,7 @@ struct MainView: View {
 
 struct AccountRowView: View {
     
-    let circleColor: Color
-    let username: String
-    let circleChar: String
+    let item: Item
     
     var body: some View {
         ZStack {
@@ -70,15 +68,15 @@ struct AccountRowView: View {
             HStack(spacing: 25) {
                 ZStack {
                     Circle()
-                        .foregroundColor(circleColor)
+                        .foregroundColor(Color(hex: item.colorHex ?? ""))
                     
-                    Text(circleChar)
+                    Text(item.character ?? "")
                         .bold()
                 }
                 .padding(.leading, 8)
                 .frame(height: 50)
                 
-                Text(username)
+                Text(item.title ?? "")
                     .foregroundColor(.labelColor)
                     .font(.title3)
                     .bold()

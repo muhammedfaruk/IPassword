@@ -7,6 +7,14 @@
 */
 
 "My_Accounts" = "Hesaplarım";
-"Please_add_your_username" = "Lütfen kullanıcı adını giriniz";
-"Add Account" = "Add Account";
+"Please_add_your_username" = "Lütfen kullanıcı adı veya email giriniz";
+"Please_add_your_password" = "Lütfen şifre giriniz";
+
 "Save" = "Kaydet";
+"All Records" = "Tüm Kayıtlar";
+
+"Add Account" = "Kayıt Ekle";
+"Please_add_title" = "Lütfen başlık giriniz";
+"Password" = "Şifre";
+"Email or Username" = "Email veya Kullanıcı Adı";
+"Title" = "Başlık";
