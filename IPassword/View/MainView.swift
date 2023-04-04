@@ -27,7 +27,7 @@ struct MainView: View {
                     .ignoresSafeArea()
                 VStack(alignment: .center) {
                                                             
-                    if items.count != 0 {
+                    if items.count == 0 {
                         Spacer()
                         VStack(alignment: .center, spacing: 20) {
                             
@@ -113,13 +113,20 @@ struct AccountRowView: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 8)
-                .foregroundColor(Color(hex: item.colorHex ?? ""))
+                .foregroundColor(Color("rowGray"))
                 .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 3)
             
             VStack(alignment: .center, spacing: 20) {
-                HStack() {
+                ZStack() {
                     iconAndTitle()
-                    moreBtn()
+                    HStack() {
+                        Spacer()
+                        VStack() {
+                            Spacer()
+                            moreBtn()
+                        }
+                    }
+                    .padding(.top)
                 }
                 
                 if isMoreVisible {
@@ -165,6 +172,7 @@ struct AccountRowView: View {
         
         VStack(alignment: .leading, spacing: 10) {
             Text(item.username ?? "")
+                .lineLimit(1)
                 .font(.body)
             Text(isSecurePass ? "Aa12345.".secureText() : "Aa12345")
                 .font( isSecurePass ? .footnote : .body)
@@ -209,8 +217,7 @@ struct AccountRowView: View {
                     .font(.callout)
             }
         }
-        .padding(.trailing)
-        .padding(.bottom, 4)
+        .padding(.trailing, 4)        
     }
     
     
@@ -219,7 +226,7 @@ struct AccountRowView: View {
         HStack(spacing: 25) {
             ZStack {
                 Circle()
-                    .foregroundColor(Color.yellow)
+                    .foregroundColor(Color(item.colorHex ?? ""))
                 
                 Text("A")
                     .bold()
@@ -231,6 +238,7 @@ struct AccountRowView: View {
                 .foregroundColor(.labelColor)
                 .font(.title3)
                 .bold()
+                .lineLimit(1)
             
             Spacer()
         }
