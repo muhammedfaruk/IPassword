@@ -109,7 +109,7 @@ struct AccountRowView: View {
     //let item: Item
     
     @State var isMoreVisible: Bool = false
-    @State var isPassVisible: Bool = false
+    @State var isSecurePass: Bool = true
     
     
     var body: some View {
@@ -124,13 +124,15 @@ struct AccountRowView: View {
                     moreBtn()
                 }
                 
-                if !isMoreVisible {
+                if isMoreVisible {
                     HStack(alignment: .bottom, spacing: 10) {
                         usernamAndPass()
                         Button {
-                            isPassVisible.toggle()
+                            withAnimation {
+                                isSecurePass.toggle()
+                            }
                         } label: {
-                            Image(systemName: isPassVisible ? "eye" : "eye.slash")
+                            Image(systemName: isSecurePass ? "eye" : "eye.slash")
                                 .padding(.trailing)
                                 .foregroundColor(.white)
                                 .padding(.bottom , 2)
@@ -166,8 +168,9 @@ struct AccountRowView: View {
         VStack(alignment: .leading, spacing: 10) {
             Text("faruk.sogut@btpro.net")
                 .font(.body)
-            Text("Aa12345.")
-                .font(.body)
+            Text(isSecurePass ? "Aa12345.".secureText() : "Aa12345")
+                .font( isSecurePass ? .footnote : .body)
+                .frame(height: 20)
         }
     }
     

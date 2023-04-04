@@ -11,4 +11,16 @@ extension String {
     func localized() -> String {
         return NSLocalizedString(self, comment: "")
     }
+    
+    func secureText() -> String {
+        var arr = Array(self)
+        
+        var secureText: String = ""
+                
+        for _ in 0...arr.count {
+            secureText += "●"
+        }
+        
+        return secureText
+    }
 }
