@@ -27,7 +27,7 @@ struct MainView: View {
                     .ignoresSafeArea()
                 VStack(alignment: .center) {
                                                             
-                    if items.count == 0 {
+                    if items.count != 0 {
                         Spacer()
                         VStack(alignment: .center, spacing: 20) {
                             
@@ -54,14 +54,16 @@ struct MainView: View {
                         Spacer()
                     }else {
                         ScrollView {
-                            VStack(spacing: 20) {
-                                ForEach(Array(items.enumerated()), id: \.element) { index, item in
-                                    NavigationLink {
-                                        AddAccountView(item: item)
-                                    } label: {
-                                        AccountRowView(item: item)
-                                    }
-                                    .buttonStyle(PlainButtonStyle())
+                            VStack() {
+                                ForEach(0...5, id: \.self) { index in
+//                                    NavigationLink {
+//                                        //AddAccountView(item: item)
+//                                    } label: {
+//
+//                                    }
+//                                    .buttonStyle(PlainButtonStyle())
+                                    AccountRowView()
+                                        //.frame(height: 60)
                                 }
                             }
                             .padding(.top)
@@ -85,7 +87,7 @@ struct MainView: View {
                 }
             })
             .navigationTitle("All Records".localized())
-            .searchable(text: $searchText)                
+            .searchable(text: $searchText)
     }
     
     @ViewBuilder
@@ -104,7 +106,11 @@ struct MainView: View {
 
 struct AccountRowView: View {
     
-    let item: Item
+    //let item: Item
+    
+    @State var isMoreVisible: Bool = false
+    @State var isPassVisible: Bool = false
+    
     
     var body: some View {
         ZStack {
@@ -112,29 +118,124 @@ struct AccountRowView: View {
                 .foregroundColor(Color("rowGray"))
                 .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 3)
             
-            HStack(spacing: 25) {
-                ZStack {
-                    Circle()
-                        .foregroundColor(Color(hex: item.colorHex ?? ""))
-                    
-                    Text(item.character ?? "")
-                        .bold()
+            VStack(alignment: .center, spacing: 20) {
+                HStack() {
+                    iconAndTitle()
+                    moreBtn()
                 }
-                .padding(.leading, 8)
-                .frame(height: 50)
                 
-                Text(item.title ?? "")
-                    .foregroundColor(.labelColor)
-                    .font(.title3)
-                    .bold()
-                
-                Spacer()
+                if !isMoreVisible {
+                    HStack(alignment: .bottom, spacing: 10) {
+                        usernamAndPass()
+                        Button {
+                            isPassVisible.toggle()
+                        } label: {
+                            Image(systemName: isPassVisible ? "eye" : "eye.slash")
+                                .padding(.trailing)
+                                .foregroundColor(.white)
+                                .padding(.bottom , 2)
+                        }
+                    }
+                    .padding(.bottom)
+                    .padding(.top)
+                    
+                    HStack {
+                        copyButtons()
+                    }
+                    .padding(.bottom)
+                }
+            }
+            .padding(10)
+        }
+        //.padding(.vertical, 25)
+        .padding(.horizontal)
+        
+    }
+    
+    @ViewBuilder
+    private func usernamAndPass() -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("Username".localized() + ":")
+                .font(.body)
+            Text("Password".localized() + ":")
+                .font(.body)
+        }
+        .padding(.leading)
+        
+        
+        VStack(alignment: .leading, spacing: 10) {
+            Text("faruk.sogut@btpro.net")
+                .font(.body)
+            Text("Aa12345.")
+                .font(.body)
+        }
+    }
+    
+    @ViewBuilder
+    private func copyButtons() -> some View {
+        Button {
+            
+        } label: {
+            HStack(alignment: .center) {
+                Image(systemName: "wallet.pass")
+                Text("Copy Name".localized())
             }
         }
-        .padding(.horizontal)
-        .frame(height: 60, alignment: .center)
+        .buttonStyle(.bordered)
+        
+        
+        Button {
+            
+        } label: {
+            HStack(alignment: .center) {
+                Image(systemName: "wallet.pass")
+                Text("Copy Password".localized())
+            }
+        }
+        .buttonStyle(.bordered)
+    }
+    
+    @ViewBuilder
+    private func moreBtn() -> some View {
+        VStack {
+            Spacer()
+            Button {
+                withAnimation {
+                    isMoreVisible.toggle()
+                }
+            } label: {
+                Text( isMoreVisible ? "Hide Detail".localized() : "Show Detail".localized())
+                    .font(.callout)
+            }
+        }
+        .padding(.trailing)
+        .padding(.bottom, 4)
+    }
+    
+    
+    @ViewBuilder
+    private func iconAndTitle() -> some View {
+        HStack(spacing: 25) {
+            ZStack {
+                Circle()
+                    .foregroundColor(Color.yellow)
+                
+                Text("A")
+                    .bold()
+            }
+            .padding(.leading, 8)
+            .frame(height: 50)
+            
+            Text("Label")
+                .foregroundColor(.labelColor)
+                .font(.title3)
+                .bold()
+            
+            Spacer()
+        }
     }
 }
+
 
 
 struct MainView_Previews: PreviewProvider {

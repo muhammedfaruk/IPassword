@@ -16,6 +16,10 @@
 "Add Account" = "Kayıt Ekle";
 "Please_add_title" = "Lütfen başlık giriniz";
 "Password" = "Şifre";
+"Username" = "Kullanıcı Adı";
 "Email or Username" = "Email veya Kullanıcı Adı";
 "Title" = "Başlık";
 "Add Your First Record" = "İlk Kaydını Oluştur";
+"Show Detail" = "Detay Göster";
+"Hide Detail" = "Detay Gizle";
+"Copy Username" = "Kullanıcı Adı Kopyala";
