@@ -22,7 +22,6 @@ struct MainView: View {
     
     
     var body: some View {
-        NavigationView {
             ZStack {
                 Color("back")
                     .ignoresSafeArea()
@@ -73,21 +72,20 @@ struct MainView: View {
                     AddAccountView()
                 }
             }
-        }
-        .onChange(of: searchText, perform: { _ in
-            if searchText.isEmpty {
-                items.nsPredicate = nil
-            } else {
-                items.nsPredicate = NSPredicate(format: "title BEGINSWITH %@", searchText)
-            }
-        })
-        .toolbar(content: {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                plusBtnView()
-            }
-        })
-        .navigationTitle("All Records".localized())
-        .searchable(text: $searchText)
+            .onChange(of: searchText, perform: { _ in
+                if searchText.isEmpty {
+                    items.nsPredicate = nil
+                } else {
+                    items.nsPredicate = NSPredicate(format: "title BEGINSWITH %@", searchText)
+                }
+            })
+            .toolbar(content: {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    plusBtnView()
+                }
+            })
+            .navigationTitle("All Records".localized())
+            .searchable(text: $searchText)                
     }
     
     @ViewBuilder
