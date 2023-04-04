@@ -53,7 +53,7 @@ struct MainView: View {
                             ZStack {
                                 Circle()
                                     .foregroundColor(Color("rowGray"))
-                                    .frame(width: 80, height: 80, alignment: .center)
+                                    .frame(width: 70, height: 70, alignment: .center)
                                     .shadow(color: .black.opacity(0.3), radius: 10)
                                 Image(systemName:"plus")
                                     .font(.title)
@@ -63,7 +63,7 @@ struct MainView: View {
                         
                         Text("Add Your First Record".localized())
                             .foregroundColor(.labelColor)
-                            .font(.title)
+                            .font(.title2)
                             .multilineTextAlignment(.center)
                     }
                     Spacer()

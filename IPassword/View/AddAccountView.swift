@@ -23,7 +23,7 @@ struct AddAccountView: View {
     @State var title: String = ""
     
     @State var circleColor: Color = .blue
-    @State var circleChar: String = "A"
+    @State var circleChar: String = "A"        
     
     let gridItemsForAlphabet = Array(repeating: GridItem(.fixed(45)), count: 1)
     let gridItems3ForColors = Array(repeating: GridItem(.fixed(45)), count: 2)
@@ -53,11 +53,11 @@ struct AddAccountView: View {
                         }
                         
                         VStack(spacing: 24) {
-                            InputView(title: "Title".localized(), input: $title, placeholder: "Please_add_title".localized(), activeColor: circleColor)
+                            InputView(title: "Title".localized(), input: $title, placeholder: "Please_add_title".localized(), activeColor: circleColor, keyboardType: .default)
                             
-                            InputView(title: "Email or Username".localized(), input: $username, placeholder: "Please_add_your_username", activeColor: circleColor)
+                            InputView(title: "Email or Username".localized(), input: $username, placeholder: "Please_add_your_username", activeColor: circleColor, keyboardType: .emailAddress)
                             
-                            InputView(title: "Password".localized(), input: $password, placeholder: "Please_add_your_password", activeColor: circleColor)
+                            InputView(title: "Password".localized(), input: $password, placeholder: "Please_add_your_password", activeColor: circleColor, keyboardType: .default, isSecureField: true)
                             
                         }
                         .padding(.horizontal)

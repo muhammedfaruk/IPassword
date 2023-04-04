@@ -13,6 +13,9 @@ struct InputView: View {
     let placeholder: String
     @State var isActive: Bool = false
     var activeColor: Color = .blue
+    let keyboardType: UIKeyboardType
+    var isSecureField:Bool = false
+    @State var showPassword: Bool = true
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -34,11 +37,21 @@ struct InputView: View {
                                 withAnimation {
                                     isActive = changed
                                 }                                
-                            }
+                            }, keyboardType: keyboardType, isSecureField: isSecureField, showPassword: showPassword
                         )
                     .foregroundColor(.labelColor)
                     .padding(.leading, 8)
-                                        
+                                       
+                    if isSecureField {
+                        Button {
+                            showPassword.toggle()
+                        } label: {
+                            Image(systemName: showPassword ? "eye" : "eye.slash")
+                                .foregroundColor(Color.labelColor.opacity(0.6))
+                                .frame(width: 25, height: 25, alignment: .center)
+                                .padding(.trailing)
+                        }
+                    }
                 }
             }
         }        
@@ -47,6 +60,6 @@ struct InputView: View {
 
 struct InputView_Previews: PreviewProvider {
     static var previews: some View {
-        InputView(title: "Username", input: .constant(""), placeholder: "Please_add_your_username")
+        InputView(title: "Username", input: .constant(""), placeholder: "Please_add_your_username", keyboardType: .emailAddress)
     }
 }
