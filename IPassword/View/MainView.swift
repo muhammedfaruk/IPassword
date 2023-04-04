@@ -54,16 +54,14 @@ struct MainView: View {
                         Spacer()
                     }else {
                         ScrollView {
-                            VStack() {
-                                ForEach(0...5, id: \.self) { index in
-//                                    NavigationLink {
-//                                        //AddAccountView(item: item)
-//                                    } label: {
-//
-//                                    }
-//                                    .buttonStyle(PlainButtonStyle())
-                                    AccountRowView()
-                                        //.frame(height: 60)
+                            VStack(spacing: 20) {
+                                ForEach(Array(items.enumerated()), id: \.element) { index, item in
+                                    NavigationLink {
+                                        AddAccountView(item: item)
+                                    } label: {
+                                        AccountRowView(item: item)
+                                    }
+                                    .buttonStyle(PlainButtonStyle())
                                 }
                             }
                             .padding(.top)
@@ -106,16 +104,16 @@ struct MainView: View {
 
 struct AccountRowView: View {
     
-    //let item: Item
+    let item: Item
     
     @State var isMoreVisible: Bool = false
     @State var isSecurePass: Bool = true
-    
+    // TODO : - core dataya username ve pass ekle, copy islemleri yap
     
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 8)
-                .foregroundColor(Color("rowGray"))
+                .foregroundColor(Color(hex: item.colorHex ?? ""))
                 .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 3)
             
             VStack(alignment: .center, spacing: 20) {
@@ -166,7 +164,7 @@ struct AccountRowView: View {
         
         
         VStack(alignment: .leading, spacing: 10) {
-            Text("faruk.sogut@btpro.net")
+            Text(item.username ?? "")
                 .font(.body)
             Text(isSecurePass ? "Aa12345.".secureText() : "Aa12345")
                 .font( isSecurePass ? .footnote : .body)
@@ -229,7 +227,7 @@ struct AccountRowView: View {
             .padding(.leading, 8)
             .frame(height: 50)
             
-            Text("Label")
+            Text(item.username ?? "")
                 .foregroundColor(.labelColor)
                 .font(.title3)
                 .bold()
