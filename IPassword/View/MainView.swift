@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    
+    @State private var searchText = ""
     @State var openSheet: Bool = false
     
     @FetchRequest(
@@ -18,77 +18,89 @@ struct MainView: View {
     
     @State private var selectedIndex: Int?
     
+    
+    
+    
     var body: some View {
-        ZStack {
-            Color("back")
-            VStack(alignment: .center) {
-                
-                HStack(alignment: .top) {
-                    Text("All Records".localized())
-                        .foregroundColor(.labelColor)
-                        .font(.title)
-                        .bold()
-                    
-                    Spacer()
-                    if items.count != 0 {
-                        Button {
-                            openSheet.toggle()
-                        } label: {
-                            Image(systemName: "plus")
-                                .foregroundColor(.labelColor)
-                                .font(.title)
-                        }
-                    }
-                }
-                .padding(.horizontal)
-                                
-                if items.count == 0 {
-                    Spacer()
-                    VStack(alignment: .center, spacing: 20) {
-                        
-                        Button {
-                            selectedIndex = nil
-                            openSheet.toggle()
-                        } label: {
-                            ZStack {
-                                Circle()
-                                    .foregroundColor(Color("rowGray"))
-                                    .frame(width: 70, height: 70, alignment: .center)
-                                    .shadow(color: .black.opacity(0.3), radius: 10)
-                                Image(systemName:"plus")
-                                    .font(.title)
-                                    .foregroundColor(.labelColor)
-                            }
-                        }
-                        
-                        Text("Add Your First Record".localized())
-                            .foregroundColor(.labelColor)
-                            .font(.title2)
-                            .multilineTextAlignment(.center)
-                    }
-                    Spacer()
-                }else {
-                    ScrollView {
-                        VStack(spacing: 20) {
-                            ForEach(Array(items.enumerated()), id: \.element) { index, item in
-                                NavigationLink {
-                                    AddAccountView(item: item)
-                                } label: {
-                                    AccountRowView(item: item)
+        NavigationView {
+            ZStack {
+                Color("back")
+                    .ignoresSafeArea()
+                VStack(alignment: .center) {
+                                                            
+                    if items.count == 0 {
+                        Spacer()
+                        VStack(alignment: .center, spacing: 20) {
+                            
+                            Button {
+                                selectedIndex = nil
+                                openSheet.toggle()
+                            } label: {
+                                ZStack {
+                                    Circle()
+                                        .foregroundColor(Color("rowGray"))
+                                        .frame(width: 70, height: 70, alignment: .center)
+                                        .shadow(color: .black.opacity(0.3), radius: 10)
+                                    Image(systemName:"plus")
+                                        .font(.title)
+                                        .foregroundColor(.labelColor)
                                 }
-                                .buttonStyle(PlainButtonStyle())
                             }
+                            
+                            Text("Add Your First Record".localized())
+                                .foregroundColor(.labelColor)
+                                .font(.title2)
+                                .multilineTextAlignment(.center)
                         }
-                        .padding(.top)
+                        Spacer()
+                    }else {
+                        ScrollView {
+                            VStack(spacing: 20) {
+                                ForEach(Array(items.enumerated()), id: \.element) { index, item in
+                                    NavigationLink {
+                                        AddAccountView(item: item)
+                                    } label: {
+                                        AccountRowView(item: item)
+                                    }
+                                    .buttonStyle(PlainButtonStyle())
+                                }
+                            }
+                            .padding(.top)
+                        }
                     }
                 }
-            }
-            .padding(.top, 74)
-            .sheet(isPresented: $openSheet) {
-                AddAccountView()
+                .sheet(isPresented: $openSheet) {
+                    AddAccountView()
+                }
             }
         }
-        .ignoresSafeArea()
+        .onChange(of: searchText, perform: { _ in
+            if searchText.isEmpty {
+                items.nsPredicate = nil
+            } else {
+                items.nsPredicate = NSPredicate(format: "title BEGINSWITH %@", searchText)
+            }
+        })
+        .toolbar(content: {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                plusBtnView()
+            }
+        })
+        .navigationTitle("All Records".localized())
+        .searchable(text: $searchText)
+    }
+    
+    @ViewBuilder
+    private func plusBtnView() -> some View {
+        if items.count != 0 {
+            Button {
+                openSheet.toggle()
+            } label: {
+                Image(systemName: "plus")
+                    .foregroundColor(.labelColor)
+                    .font(.title2)
+            }
+        }
     }
 }
 
