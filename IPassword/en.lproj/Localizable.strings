@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  IPassword
+
+  Created by Muhammed Faruk Söğüt on 2.04.2023.
+  
+*/
+
+"My_Accounts" = "My Accounts";
+"Please_add_your_username" = "Please add your username or email";
+"Please_add_your_password" = "Please add your password";
+"Add Account" = "Add Record";
+"Save" = "Save";
+"All Records" = "All Records";
+"Please_add_title" = "Please add title";
+"Password" = "Password";
+"Username" = "Username";
+"Email or Username" = "Email or Username";
+"Title" = "Title";
+"Add Your First Record" = "Add Your First Record";
+"Show Detail" = "Show Detail";
+"Hide Detail" = "Hide Detail";
+"Copy Username" = "Copy Username";
