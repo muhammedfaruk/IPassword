@@ -108,7 +108,7 @@ struct AccountRowView: View {
     
     @State var isMoreVisible: Bool = false
     @State var isSecurePass: Bool = true
-    // TODO : - core dataya username ve pass ekle, copy islemleri yap
+    //TODO: - core dataya username ve pass ekle, copy islemleri yap
     
     var body: some View {
         ZStack {
@@ -129,9 +129,10 @@ struct AccountRowView: View {
                     .padding(.top)
                 }
                 
-                if isMoreVisible {
-                    HStack(alignment: .bottom, spacing: 10) {
+                if !isMoreVisible {
+                    HStack(alignment: .center, spacing: 10) {
                         usernamAndPass()
+                        Spacer()
                         Button {
                             withAnimation {
                                 isSecurePass.toggle()
@@ -140,7 +141,7 @@ struct AccountRowView: View {
                             Image(systemName: isSecurePass ? "eye" : "eye.slash")
                                 .padding(.trailing)
                                 .foregroundColor(.white)
-                                .padding(.bottom , 2)
+                                .padding(.top)
                         }
                     }
                     .padding(.bottom)
@@ -174,7 +175,8 @@ struct AccountRowView: View {
             Text(item.username ?? "")
                 .lineLimit(1)
                 .font(.body)
-            Text(isSecurePass ? "Aa12345.".secureText() : "Aa12345")
+            let password = item.pass ?? ""
+            Text(isSecurePass ? password.secureText() : password)
                 .font( isSecurePass ? .footnote : .body)
                 .frame(height: 20)
         }
@@ -182,16 +184,19 @@ struct AccountRowView: View {
     
     @ViewBuilder
     private func copyButtons() -> some View {
+        Spacer()
         Button {
             
         } label: {
             HStack(alignment: .center) {
                 Image(systemName: "wallet.pass")
-                Text("Copy Name".localized())
+                Text("Copy Username".localized())
+                    .lineLimit(1)
             }
         }
         .buttonStyle(.bordered)
         
+        Spacer()
         
         Button {
             
@@ -199,9 +204,11 @@ struct AccountRowView: View {
             HStack(alignment: .center) {
                 Image(systemName: "wallet.pass")
                 Text("Copy Password".localized())
+                    .lineLimit(1)
             }
         }
         .buttonStyle(.bordered)
+        Spacer()
     }
     
     @ViewBuilder
@@ -213,11 +220,12 @@ struct AccountRowView: View {
                     isMoreVisible.toggle()
                 }
             } label: {
-                Text( isMoreVisible ? "Hide Detail".localized() : "Show Detail".localized())
-                    .font(.callout)
+                Image(systemName: isMoreVisible ? "chevron.down" : "chevron.up")
+                    .font(.title3)
             }
         }
-        .padding(.trailing, 4)        
+        .padding(.trailing, 4)
+        .padding(.top, 16)
     }
     
     
@@ -226,7 +234,7 @@ struct AccountRowView: View {
         HStack(spacing: 25) {
             ZStack {
                 Circle()
-                    .foregroundColor(Color(item.colorHex ?? ""))
+                    .foregroundColor(Color.red)
                 
                 Text("A")
                     .bold()
@@ -234,11 +242,10 @@ struct AccountRowView: View {
             .padding(.leading, 8)
             .frame(height: 50)
             
-            Text(item.username ?? "")
+            Text(item.title ?? "")
                 .foregroundColor(.labelColor)
                 .font(.title3)
                 .bold()
-                .lineLimit(1)
             
             Spacer()
         }
