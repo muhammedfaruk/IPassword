@@ -8,12 +8,32 @@
 import SwiftUI
 
 struct BaseView: View {
+    @State var showMessage: Bool = false
+    @State var message: String = ""
+    
     var body: some View {
-        NavigationView {
-            MainView()
+        ZStack {
+            TabView {
+                NavigationView {
+                    MainView(showMessage: $showMessage, message: $message)
+                }
+                .tabItem {
+                    Label("All Records".localized(), image: "eye")
+                }
+                
+                NavigationView {
+                    Color.red
+                }
+                .tabItem {
+                    Label("All Records".localized(), image: "eye")
+                }
+            }
+            ShowMessageView(showMessage: $showMessage, message: $message)
         }
     }
 }
+
+
 
 struct BaseView_Previews: PreviewProvider {
     static var previews: some View {

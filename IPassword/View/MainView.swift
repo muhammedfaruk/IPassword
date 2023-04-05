@@ -17,9 +17,8 @@ struct MainView: View {
     private var items: FetchedResults<Item>
     
     @State private var selectedIndex: Int?
-    
-    
-    
+    @Binding var showMessage: Bool
+    @Binding var message: String
     
     var body: some View {
             ZStack {
@@ -59,7 +58,7 @@ struct MainView: View {
                                     NavigationLink {
                                         AddAccountView(item: item)
                                     } label: {
-                                        AccountRowView(item: item)
+                                        AccountRowView(item: item, showMessage: $showMessage, message: $message)
                                     }
                                     .buttonStyle(PlainButtonStyle())
                                 }
@@ -105,7 +104,8 @@ struct MainView: View {
 struct AccountRowView: View {
     
     let item: Item
-    
+    @Binding var showMessage: Bool
+    @Binding var message: String
     @State var isMoreVisible: Bool = false
     @State var isSecurePass: Bool = true
     //TODO: - core dataya username ve pass ekle, copy islemleri yap
@@ -129,7 +129,7 @@ struct AccountRowView: View {
                     .padding(.top)
                 }
                 
-                if !isMoreVisible {
+                if isMoreVisible {
                     HStack(alignment: .center, spacing: 10) {
                         usernamAndPass()
                         Spacer()
@@ -186,7 +186,11 @@ struct AccountRowView: View {
     private func copyButtons() -> some View {
         Spacer()
         Button {
-            
+            UIPasteboard.general.string = item.username ?? ""
+            withAnimation {
+                message = "Username Copied"
+                showMessage = true
+            }
         } label: {
             HStack(alignment: .center) {
                 Image(systemName: "wallet.pass")
@@ -199,7 +203,11 @@ struct AccountRowView: View {
         Spacer()
         
         Button {
-            
+            UIPasteboard.general.string = item.pass ?? ""
+            withAnimation {
+                message = "Password Copied"
+                showMessage = true
+            }
         } label: {
             HStack(alignment: .center) {
                 Image(systemName: "wallet.pass")
@@ -220,7 +228,7 @@ struct AccountRowView: View {
                     isMoreVisible.toggle()
                 }
             } label: {
-                Image(systemName: isMoreVisible ? "chevron.down" : "chevron.up")
+                Image(systemName: isMoreVisible ? "chevron.up" : "chevron.down")
                     .font(.title3)
             }
         }
@@ -256,7 +264,7 @@ struct AccountRowView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView(showMessage: .constant(false), message: .constant(""))
     }
 }
 

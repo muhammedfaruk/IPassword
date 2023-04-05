@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		596D627129DB7FD7003C6029 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D627029DB7FD7003C6029 /* BaseView.swift */; };
+		59CB438529DE0E6700626188 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB438429DE0E6700626188 /* MessageView.swift */; };
 		59EBCE3C29D993C80074EB9D /* IPasswordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EBCE3B29D993C80074EB9D /* IPasswordApp.swift */; };
 		59EBCE3E29D993C80074EB9D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EBCE3D29D993C80074EB9D /* ContentView.swift */; };
 		59EBCE4029D993C90074EB9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59EBCE3F29D993C90074EB9D /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		596D627029DB7FD7003C6029 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		59CB438429DE0E6700626188 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		59EBCE3829D993C80074EB9D /* IPassword.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IPassword.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59EBCE3B29D993C80074EB9D /* IPasswordApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPasswordApp.swift; sourceTree = "<group>"; };
 		59EBCE3D29D993C80074EB9D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				59EBCE4E29D9949F0074EB9D /* MainView.swift */,
 				59F8BADC29D9B02500E86537 /* AddAccountView.swift */,
 				596D627029DB7FD7003C6029 /* BaseView.swift */,
+				59CB438429DE0E6700626188 /* MessageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59CB438529DE0E6700626188 /* MessageView.swift in Sources */,
 				59EBCE4529D993C90074EB9D /* Persistence.swift in Sources */,
 				59F8BADA29D9AF2900E86537 /* Color+.swift in Sources */,
 				59F8BADD29D9B02500E86537 /* AddAccountView.swift in Sources */,
