@@ -24,7 +24,10 @@ struct AddAccountView: View {
     @State var title: String = ""
     
     @State var circleColor: Color = .blue
-    @State var circleChar: String = "A"        
+    @State var circleChar: String = "A"
+    
+    @State var showAlert: Bool = false
+    @State var alertMessage: String = ""
     
     let gridItemsForAlphabet = Array(repeating: GridItem(.fixed(45)), count: 1)
     let gridItems3ForColors = Array(repeating: GridItem(.fixed(45)), count: 2)
@@ -129,7 +132,9 @@ struct AddAccountView: View {
                                                                         
                                 }else {
                                     //MARK - SAVE
-                                    addItem()
+                                    if isValidForm() {
+                                        addItem()
+                                    }
                                 }
                                                                 
                             } label: {
@@ -156,6 +161,8 @@ struct AddAccountView: View {
                 .padding(.bottom)
             }
             .padding(.top, 24)
+            
+            AlertView(message: alertMessage, isActive: $showAlert)
         }
         .navigationBarHidden(true)
         .onAppear {
@@ -189,7 +196,7 @@ struct AddAccountView: View {
     private func updateItem(updateItem: Item) {
         withAnimation {
             items.forEach { item in
-                if item == updateItem {                    
+                if item == updateItem {
                     item.character = circleChar
                     item.colorHex = circleColor.toHex() ?? "3478F6"
                     item.username = username
@@ -203,6 +210,29 @@ struct AddAccountView: View {
         }        
     }
     
+    private func isValidForm() -> Bool {
+        if title.isEmpty {
+            showAlert(message: "Please check your TITLE".localized())
+            return false
+        }
+      
+        if username.isEmpty {
+            showAlert(message: "Please check your USERNAME".localized())
+            return false
+        }
+        
+        if password.isEmpty {
+            showAlert(message: "Please check your PASSWORD".localized())
+            return false
+        }
+        
+        return true
+    }
+    
+    private func showAlert(message: String) {
+        showAlert = true
+        alertMessage = message
+    }
     
     private func addItem() {
         withAnimation {

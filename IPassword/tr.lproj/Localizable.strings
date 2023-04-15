@@ -27,3 +27,7 @@
 "Hide Detail" = "Kapat";
 "Copy Username" = "Kullanıcı Adı Kopyala";
 "Copy Password" = "Şifreyi Kopyala";
+
+"Please check your TITLE" = "Lütfen başlık giriniz";
+"Please check your USERNAME" = "Lütfen kullanıcı adınızı kontrol ediniz";
+"Please check your PASSWORD" = "Lütfen şifrenizi kontrol ediniz";
