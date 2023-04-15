@@ -117,9 +117,9 @@
 		59F8BADB29D9B00F00E86537 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				596D627029DB7FD7003C6029 /* BaseView.swift */,
 				59EBCE4E29D9949F0074EB9D /* MainView.swift */,
 				59F8BADC29D9B02500E86537 /* AddAccountView.swift */,
-				596D627029DB7FD7003C6029 /* BaseView.swift */,
 				59CB438429DE0E6700626188 /* MessageView.swift */,
 			);
 			path = View;

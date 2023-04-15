@@ -10,15 +10,22 @@ import SwiftUI
 struct MainView: View {
     @State private var searchText = ""
     @State var openSheet: Bool = false
+    @State var openUpdateSheet: Bool = false
     
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: false)],
         animation: .default)
     private var items: FetchedResults<Item>
     
-    @State private var selectedIndex: Int?
+    var didSave =  NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave) //the publisher
+    @State private var refreshID = UUID()
+    
+        
     @Binding var showMessage: Bool
     @Binding var message: String
+    
+    @State private var selectedItemIndex: Int?
+    @State private var selectedItem: FetchedResults<Item>.Element?
     
     var body: some View {
             ZStack {
@@ -31,7 +38,6 @@ struct MainView: View {
                         VStack(alignment: .center, spacing: 20) {
                             
                             Button {
-                                selectedIndex = nil
                                 openSheet.toggle()
                             } label: {
                                 ZStack {
@@ -55,21 +61,28 @@ struct MainView: View {
                         ScrollView {
                             VStack(spacing: 20) {
                                 ForEach(Array(items.enumerated()), id: \.element) { index, item in
-                                    NavigationLink {
-                                        AddAccountView(item: item)
-                                    } label: {
-                                        AccountRowView(item: item, showMessage: $showMessage, message: $message)
-                                    }
-                                    .buttonStyle(PlainButtonStyle())
+                                    AccountRowView(item: item, showMessage: $showMessage, message: $message)
+                                        .onTapGesture {
+                                            //Update
+                                            selectedItem = item
+                                            openUpdateSheet.toggle()
+                                        }
                                 }
                             }
                             .padding(.top)
+                        }
+                        .id(refreshID)
+                        .onReceive(self.didSave) { _ in //the listener - context update
+                            self.refreshID = UUID()
                         }
                     }
                 }
                 .sheet(isPresented: $openSheet) {
                     AddAccountView()
                 }
+                .sheet(item: $selectedItem, content: { i in
+                    AddAccountView(item: i, isUpdate: true)
+                })
             }
             .onChange(of: searchText, perform: { _ in
                 if searchText.isEmpty {
@@ -108,7 +121,6 @@ struct AccountRowView: View {
     @Binding var message: String
     @State var isMoreVisible: Bool = false
     @State var isSecurePass: Bool = true
-    //TODO: - core dataya username ve pass ekle, copy islemleri yap
     
     var body: some View {
         ZStack {
@@ -242,9 +254,9 @@ struct AccountRowView: View {
         HStack(spacing: 25) {
             ZStack {
                 Circle()
-                    .foregroundColor(Color.red)
+                    .foregroundColor(Color(hex: item.colorHex ?? "fffff"))
                 
-                Text("A")
+                Text(item.character ?? "")
                     .bold()
             }
             .padding(.leading, 8)

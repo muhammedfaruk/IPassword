@@ -18,14 +18,14 @@ struct BaseView: View {
                     MainView(showMessage: $showMessage, message: $message)
                 }
                 .tabItem {
-                    Label("All Records".localized(), image: "eye")
+                    Label("All Records".localized(), systemImage: "list.bullet.indent")
                 }
                 
                 NavigationView {
                     Color.red
                 }
                 .tabItem {
-                    Label("All Records".localized(), image: "eye")
+                    Label("All Records".localized(), systemImage: "gear")
                 }
             }
             ShowMessageView(showMessage: $showMessage, message: $message)

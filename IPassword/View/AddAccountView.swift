@@ -17,6 +17,7 @@ struct AddAccountView: View {
     private var items: FetchedResults<Item>
     
     var item: Item?
+    var isUpdate: Bool = false
     
     @State var username: String = ""
     @State var password: String = ""
@@ -37,20 +38,13 @@ struct AddAccountView: View {
             ScrollView(.vertical) {
                 VStack(alignment: .leading) {
                     
-                    Text("Add Account".localized())
+                    Text(isUpdate ? "Update Record".localized() : "Add Record".localized())
                         .bold()
                         .font(.title)
                         .padding(.leading, 24)
                     
                     VStack {
-                        ZStack {
-                            Circle()
-                                .foregroundColor(circleColor)
-                                .frame(width: 50, height: 50, alignment: .center)
-                            Text(circleChar)
-                                .foregroundColor(.labelColor)
-                                .bold()
-                        }
+                        circle()
                         
                         VStack(spacing: 24) {
                             InputView(title: "Title".localized(), input: $title, placeholder: "Please_add_title".localized(), activeColor: circleColor, keyboardType: .default)
@@ -126,8 +120,17 @@ struct AddAccountView: View {
                             .frame(maxHeight: .infinity)
                             
                             Button {
-                                //MARK - SAVE
-                                addItem()
+                                
+                                if isUpdate {
+                                    //MARK - UPDATE
+                                    if item != nil {
+                                        updateItem(updateItem: item!)
+                                    }
+                                                                        
+                                }else {
+                                    //MARK - SAVE
+                                    addItem()
+                                }
                                                                 
                             } label: {
                                 ZStack {
@@ -136,7 +139,7 @@ struct AddAccountView: View {
                                             LinearGradient(gradient: Gradient(colors: [circleColor, Color.sysBack]), startPoint: .leading, endPoint: .trailing)
                                         )
                                     
-                                    Text("Save".localized())
+                                    Text(isUpdate ? "Update".localized() : "Save".localized())
                                         .bold()
                                         .foregroundColor(.labelColor)
                                 }
@@ -154,21 +157,52 @@ struct AddAccountView: View {
             }
             .padding(.top, 24)
         }
-        //.ignoresSafeArea()
+        .navigationBarHidden(true)
         .onAppear {
             setDataIfNotNil()
         }
     }
     
     
+    private func circle() -> some View {
+        ZStack {
+            Circle()
+                .foregroundColor(circleColor)
+                .frame(width: 50, height: 50, alignment: .center)
+            Text(circleChar)
+                .foregroundColor(.labelColor)
+                .bold()
+        }
+    }
+    
+    //MARK: -Update icin hazir gelen bilgiler burada handle ediliyor
     private func setDataIfNotNil(){
         if item != nil {
             title = item?.title ?? ""
             username = item?.username ?? ""
+            password = item?.pass ?? ""
             circleChar = item?.character ?? ""
             circleColor = Color(hex: item?.colorHex ?? "")
         }
     }
+    
+    private func updateItem(updateItem: Item) {
+        withAnimation {
+            items.forEach { item in
+                if item == updateItem {                    
+                    item.character = circleChar
+                    item.colorHex = circleColor.toHex() ?? "3478F6"
+                    item.username = username
+                    item.pass = password
+                    item.title = title
+                }
+                
+                saveContext()
+                dismiss()
+            }
+        }        
+    }
+    
     
     private func addItem() {
         withAnimation {
@@ -179,28 +213,29 @@ struct AddAccountView: View {
             newItem.username = username
             newItem.pass = password
             newItem.title = title
-            do {
-                try viewContext.save()
-            } catch {                
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-            
-            presentationMode.wrappedValue.dismiss()
+            saveContext()
+            dismiss()
         }
     }
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+            saveContext()
         }
+    }
+    
+    private func saveContext() {
+        do {
+            try viewContext.save()
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
+    }
+    
+    private func dismiss() {
+        presentationMode.wrappedValue.dismiss()
     }
 }
 

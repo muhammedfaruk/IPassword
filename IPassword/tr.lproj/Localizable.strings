@@ -13,7 +13,10 @@
 "Save" = "Kaydet";
 "All Records" = "Tüm Kayıtlar";
 
-"Add Account" = "Kayıt Ekle";
+"Add Record" = "Kayıt Ekle";
+"Update Record" = "Kaydı Güncelle";
+"Update" = "Güncelle";
+
 "Please_add_title" = "Lütfen başlık giriniz";
 "Password" = "Şifre";
 "Username" = "Kullanıcı Adı";

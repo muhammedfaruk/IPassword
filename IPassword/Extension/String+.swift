@@ -13,7 +13,7 @@ extension String {
     }
     
     func secureText() -> String {
-        var arr = Array(self)
+        let arr = Array(self)
         
         var secureText: String = ""
                 

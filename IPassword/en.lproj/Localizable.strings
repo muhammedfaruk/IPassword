@@ -9,8 +9,10 @@
 "My_Accounts" = "My Accounts";
 "Please_add_your_username" = "Please add your username or email";
 "Please_add_your_password" = "Please add your password";
-"Add Account" = "Add Record";
+"Add Record" = "Add Record";
+"Update Record" = "Update Record";
 "Save" = "Save";
+"Update" = "Update";
 "All Records" = "All Records";
 "Please_add_title" = "Please add title";
 "Password" = "Password";
