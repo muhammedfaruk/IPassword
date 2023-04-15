@@ -10,6 +10,7 @@
 		596D627129DB7FD7003C6029 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D627029DB7FD7003C6029 /* BaseView.swift */; };
 		59CB18D429EAECF9009FDA33 /* SwipeActions in Frameworks */ = {isa = PBXBuildFile; productRef = 59CB18D329EAECF9009FDA33 /* SwipeActions */; };
 		59CB18D629EAEF24009FDA33 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB18D529EAEF24009FDA33 /* AlertView.swift */; };
+		59CB18D829EAF5F7009FDA33 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB18D729EAF5F7009FDA33 /* SettingsView.swift */; };
 		59CB438529DE0E6700626188 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB438429DE0E6700626188 /* MessageView.swift */; };
 		59EBCE3C29D993C80074EB9D /* IPasswordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EBCE3B29D993C80074EB9D /* IPasswordApp.swift */; };
 		59EBCE3E29D993C80074EB9D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EBCE3D29D993C80074EB9D /* ContentView.swift */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		596D627029DB7FD7003C6029 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		59CB18D529EAEF24009FDA33 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		59CB18D729EAF5F7009FDA33 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		59CB438429DE0E6700626188 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		59EBCE3829D993C80074EB9D /* IPassword.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IPassword.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59EBCE3B29D993C80074EB9D /* IPasswordApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPasswordApp.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				59EBCE4E29D9949F0074EB9D /* MainView.swift */,
 				59F8BADC29D9B02500E86537 /* AddAccountView.swift */,
 				59CB438429DE0E6700626188 /* MessageView.swift */,
+				59CB18D729EAF5F7009FDA33 /* SettingsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				59F8BAD629D9A4CB00E86537 /* SuperTextField.swift in Sources */,
 				59EBCE3E29D993C80074EB9D /* ContentView.swift in Sources */,
 				59EBCE5729D996970074EB9D /* String+.swift in Sources */,
+				59CB18D829EAF5F7009FDA33 /* SettingsView.swift in Sources */,
 				59EBCE4829D993C90074EB9D /* IPassword.xcdatamodeld in Sources */,
 				59CB18D629EAEF24009FDA33 /* AlertView.swift in Sources */,
 				59F8BAD829D9A5BE00E86537 /* InputView.swift in Sources */,
@@ -364,6 +368,7 @@
 				DEVELOPMENT_TEAM = NWVGLJCR5H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We use this to unlock the app. Important for your passwords";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -395,6 +400,7 @@
 				DEVELOPMENT_TEAM = NWVGLJCR5H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We use this to unlock the app. Important for your passwords";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
