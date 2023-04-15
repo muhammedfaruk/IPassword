@@ -24,9 +24,9 @@ struct SettingsView: View {
                         Text("Biometric Login")
                     }
                 } header: {
-                    Text("Login Options")
+                    Text("Login Options".localized())
                 } footer: {
-                    Text("Use Face ID to log into IPassword")
+                    Text("Use Face ID to log into IPassword".localized())
                         .font(.footnote)
                 }
                 .listRowBackground(Color("rowGray"))

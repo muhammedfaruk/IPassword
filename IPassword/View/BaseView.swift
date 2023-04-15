@@ -38,7 +38,7 @@ struct BaseView: View {
                         SettingsView()
                     }
                     .tabItem {
-                        Label("All Records".localized(), systemImage: "gear")
+                        Label("Settings".localized(), systemImage: "gearshape")
                     }
                 }
                 ShowMessageView(showMessage: $showMessage, message: $message)
