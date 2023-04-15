@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import SwipeActions
 
 struct MainView: View {
     @State private var searchText = ""
     @State var openSheet: Bool = false
     @State var openUpdateSheet: Bool = false
     
+    @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: false)],
         animation: .default)
@@ -61,12 +63,18 @@ struct MainView: View {
                         ScrollView {
                             VStack(spacing: 20) {
                                 ForEach(Array(items.enumerated()), id: \.element) { index, item in
-                                    AccountRowView(item: item, showMessage: $showMessage, message: $message)
-                                        .onTapGesture {
-                                            //Update
-                                            selectedItem = item
-                                            openUpdateSheet.toggle()
+                                    SwipeView {
+                                        AccountRowView(item: item, showMessage: $showMessage, message: $message)
+                                            .onTapGesture {
+                                                //Update
+                                                selectedItem = item
+                                                openUpdateSheet.toggle()
+                                            }
+                                    } trailingActions: { _ in
+                                        SwipeAction("Delete", backgroundColor: .red, highlightOpacity: 0.5) {
+                                            delete(deleteItem: item)
                                         }
+                                    }
                                 }
                             }
                             .padding(.top)
@@ -110,6 +118,26 @@ struct MainView: View {
                     .foregroundColor(.labelColor)
                     .font(.title2)
             }
+        }
+    }
+    
+    private func delete(deleteItem: Item) {
+        withAnimation {
+            items.forEach { item in
+                if item == deleteItem {
+                    viewContext.delete(item)
+                    saveContext()
+                }
+            }
+        }
+    }
+    
+    private func saveContext() {
+        do {
+            try viewContext.save()
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
 }

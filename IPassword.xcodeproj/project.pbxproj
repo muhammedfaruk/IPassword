@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		596D627129DB7FD7003C6029 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D627029DB7FD7003C6029 /* BaseView.swift */; };
+		59CB18D429EAECF9009FDA33 /* SwipeActions in Frameworks */ = {isa = PBXBuildFile; productRef = 59CB18D329EAECF9009FDA33 /* SwipeActions */; };
 		59CB438529DE0E6700626188 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB438429DE0E6700626188 /* MessageView.swift */; };
 		59EBCE3C29D993C80074EB9D /* IPasswordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EBCE3B29D993C80074EB9D /* IPasswordApp.swift */; };
 		59EBCE3E29D993C80074EB9D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EBCE3D29D993C80074EB9D /* ContentView.swift */; };
@@ -49,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59CB18D429EAECF9009FDA33 /* SwipeActions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +143,9 @@
 			dependencies = (
 			);
 			name = IPassword;
+			packageProductDependencies = (
+				59CB18D329EAECF9009FDA33 /* SwipeActions */,
+			);
 			productName = IPassword;
 			productReference = 59EBCE3829D993C80074EB9D /* IPassword.app */;
 			productType = "com.apple.product-type.application";
@@ -170,6 +175,9 @@
 				tr,
 			);
 			mainGroup = 59EBCE2F29D993C80074EB9D;
+			packageReferences = (
+				59CB18D229EAECF9009FDA33 /* XCRemoteSwiftPackageReference "SwipeActions" */,
+			);
 			productRefGroup = 59EBCE3929D993C80074EB9D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -425,6 +433,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		59CB18D229EAECF9009FDA33 /* XCRemoteSwiftPackageReference "SwipeActions" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aheze/SwipeActions";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		59CB18D329EAECF9009FDA33 /* SwipeActions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59CB18D229EAECF9009FDA33 /* XCRemoteSwiftPackageReference "SwipeActions" */;
+			productName = SwipeActions;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		59EBCE4629D993C90074EB9D /* IPassword.xcdatamodeld */ = {
