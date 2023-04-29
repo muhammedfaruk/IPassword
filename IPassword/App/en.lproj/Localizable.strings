@@ -33,3 +33,5 @@
 "Use Face ID to log into IPassword" = "Use Face ID to log into IPassword";
 "Settings" = "Settings";
 "Login Options" = "Login Options"; 
+"Username Copied" = "Username Copied";
+"Password Copied" = "Password Copied";

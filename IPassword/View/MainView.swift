@@ -228,7 +228,7 @@ struct AccountRowView: View {
         Button {
             UIPasteboard.general.string = item.username ?? ""
             withAnimation {
-                message = "Username Copied"
+                message = "Username Copied".localized()
                 showMessage = true
             }
         } label: {
@@ -245,7 +245,7 @@ struct AccountRowView: View {
         Button {
             UIPasteboard.general.string = item.pass ?? ""
             withAnimation {
-                message = "Password Copied"
+                message = "Password Copied".localized()
                 showMessage = true
             }
         } label: {

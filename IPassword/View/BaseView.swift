@@ -7,8 +7,11 @@
 
 import SwiftUI
 import LocalAuthentication
+import GoogleMobileAds
 
 struct BaseView: View {
+    @State var interstitial: GADInterstitialAd?
+    @AppStorage("isAdsShowedBefore") var isAdsShowedBefore: Bool = false
     @State private var unlocked = false
     @State private var biometricIsAvailable = true
     
@@ -46,6 +49,9 @@ struct BaseView: View {
             
             
         }
+        .onLoad(perform: {
+            requestAds()
+        })
         .onAppear(perform: {
             if UserDefaults.standard.bool(forKey: "isBiometricOn") {
                 authenticate()
@@ -72,6 +78,38 @@ struct BaseView: View {
         } else {
             biometricIsAvailable = false
         }
+    }
+    
+    
+    private func requestAds(){
+        let request = GADRequest()
+        GADInterstitialAd.load(withAdUnitID: AdmobHelper.intersitialId, request: request) {[self] ad, error in
+            if let error = error {
+                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                return
+            }
+            self.interstitial = ad
+            self.showAds()
+        }
+    }
+    
+    private func showAds(){
+        
+        guard !isAdsShowedBefore else {
+            UserDefaults.standard.set(false, forKey: "isAdsShowedBefore")
+            return
+        }
+
+        if interstitial != nil {
+            
+            if let root = UIApplication.shared.windows.first?.rootViewController {
+                interstitial?.present(fromRootViewController: root)
+                UserDefaults.standard.set(true, forKey: "isAdsShowedBefore")
+            }
+            
+         } else {
+           print("Ad wasn't ready")
+         }
     }
 }
 

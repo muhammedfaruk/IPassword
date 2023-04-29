@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+import GoogleMobileAds
 
 struct AddAccountView: View {
+    @State var interstitial: GADInterstitialAd?
+    private let adCoordinator = AdCoordinator()
+    @State private var showIntersitialAd = false
+    
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -131,7 +136,7 @@ struct AddAccountView: View {
                                     }
                                                                         
                                 }else {
-                                    //MARK - SAVE
+                                    //MARK: - SAVE
                                     if isValidForm() {
                                         addItem()
                                     }
@@ -234,7 +239,40 @@ struct AddAccountView: View {
         alertMessage = message
     }
     
+    
+    private func requestAds(){
+        let request = GADRequest()
+        GADInterstitialAd.load(withAdUnitID: AdmobHelper.intersitialId, request: request) {[self] ad, error in
+            if let error = error {
+                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                return
+            }
+            self.interstitial = ad
+            self.showAds()
+        }
+    }
+    
+    private func showAds(){
+        
+//        guard !isAdsShowedBefore else {
+//            UserDefaults.standard.set(false, forKey: "isAdsShowedBefore")
+//            return
+//        }
+//
+        if interstitial != nil {
+            
+            if let root = UIApplication.shared.windows.first?.rootViewController {
+                interstitial?.present(fromRootViewController: root)
+            }
+            
+         } else {
+           print("Ad wasn't ready")
+         }
+    }
+    
     private func addItem() {
+        requestAds()
+        
         withAnimation {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()

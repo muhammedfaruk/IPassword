@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		592A7AA029FDD02600CFE338 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 592A7A9F29FDD02600CFE338 /* GoogleMobileAds */; };
+		592A7AA329FDD27C00CFE338 /* InterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592A7AA229FDD27C00CFE338 /* InterstitialAd.swift */; };
+		592A7AA529FDD7FD00CFE338 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592A7AA429FDD7FD00CFE338 /* Modifiers.swift */; };
+		592A7AA829FDD86500CFE338 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592A7AA729FDD86500CFE338 /* View+.swift */; };
+		592A7AAC29FDD9D700CFE338 /* AdmobHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592A7AAB29FDD9D700CFE338 /* AdmobHelper.swift */; };
 		596D627129DB7FD7003C6029 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D627029DB7FD7003C6029 /* BaseView.swift */; };
 		59CB18D429EAECF9009FDA33 /* SwipeActions in Frameworks */ = {isa = PBXBuildFile; productRef = 59CB18D329EAECF9009FDA33 /* SwipeActions */; };
 		59CB18D629EAEF24009FDA33 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB18D529EAEF24009FDA33 /* AlertView.swift */; };
@@ -28,6 +33,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		592A7AA129FDD05C00CFE338 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		592A7AA229FDD27C00CFE338 /* InterstitialAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialAd.swift; sourceTree = "<group>"; };
+		592A7AA429FDD7FD00CFE338 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
+		592A7AA729FDD86500CFE338 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		592A7AAB29FDD9D700CFE338 /* AdmobHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdmobHelper.swift; sourceTree = "<group>"; };
 		596D627029DB7FD7003C6029 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		59CB18D529EAEF24009FDA33 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		59CB18D729EAF5F7009FDA33 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -54,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				592A7AA029FDD02600CFE338 /* GoogleMobileAds in Frameworks */,
 				59CB18D429EAECF9009FDA33 /* SwipeActions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -61,6 +72,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		592A7AA929FDD92200CFE338 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				59EBCE5429D9964E0074EB9D /* Localizable.strings */,
+				59EBCE3F29D993C90074EB9D /* Assets.xcassets */,
+				59EBCE3B29D993C80074EB9D /* IPasswordApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		592A7AAA29FDD93200CFE338 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				59EBCE4429D993C90074EB9D /* Persistence.swift */,
+				592A7AAB29FDD9D700CFE338 /* AdmobHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		59EBCE2F29D993C80074EB9D = {
 			isa = PBXGroup;
 			children = (
@@ -80,16 +110,15 @@
 		59EBCE3A29D993C80074EB9D /* IPassword */ = {
 			isa = PBXGroup;
 			children = (
+				592A7AAA29FDD93200CFE338 /* Helper */,
+				592A7AA929FDD92200CFE338 /* App */,
 				59F8BADB29D9B00F00E86537 /* View */,
 				59F8BAD429D9A4B800E86537 /* CustomReusable */,
 				59EBCE5829D996E90074EB9D /* Extension */,
-				59EBCE3B29D993C80074EB9D /* IPasswordApp.swift */,
 				59EBCE3D29D993C80074EB9D /* ContentView.swift */,
-				59EBCE3F29D993C90074EB9D /* Assets.xcassets */,
-				59EBCE4429D993C90074EB9D /* Persistence.swift */,
+				592A7AA129FDD05C00CFE338 /* Info.plist */,
 				59EBCE4629D993C90074EB9D /* IPassword.xcdatamodeld */,
 				59EBCE4129D993C90074EB9D /* Preview Content */,
-				59EBCE5429D9964E0074EB9D /* Localizable.strings */,
 			);
 			path = IPassword;
 			sourceTree = "<group>";
@@ -105,8 +134,10 @@
 		59EBCE5829D996E90074EB9D /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				592A7AA429FDD7FD00CFE338 /* Modifiers.swift */,
 				59EBCE5629D996970074EB9D /* String+.swift */,
 				59F8BAD929D9AF2900E86537 /* Color+.swift */,
+				592A7AA729FDD86500CFE338 /* View+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -117,6 +148,7 @@
 				59F8BAD529D9A4CB00E86537 /* SuperTextField.swift */,
 				59F8BAD729D9A5BE00E86537 /* InputView.swift */,
 				59CB18D529EAEF24009FDA33 /* AlertView.swift */,
+				592A7AA229FDD27C00CFE338 /* InterstitialAd.swift */,
 			);
 			path = CustomReusable;
 			sourceTree = "<group>";
@@ -151,6 +183,7 @@
 			name = IPassword;
 			packageProductDependencies = (
 				59CB18D329EAECF9009FDA33 /* SwipeActions */,
+				592A7A9F29FDD02600CFE338 /* GoogleMobileAds */,
 			);
 			productName = IPassword;
 			productReference = 59EBCE3829D993C80074EB9D /* IPassword.app */;
@@ -183,6 +216,7 @@
 			mainGroup = 59EBCE2F29D993C80074EB9D;
 			packageReferences = (
 				59CB18D229EAECF9009FDA33 /* XCRemoteSwiftPackageReference "SwipeActions" */,
+				592A7A9E29FDD02600CFE338 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			productRefGroup = 59EBCE3929D993C80074EB9D /* Products */;
 			projectDirPath = "";
@@ -216,12 +250,16 @@
 				59F8BADA29D9AF2900E86537 /* Color+.swift in Sources */,
 				59F8BADD29D9B02500E86537 /* AddAccountView.swift in Sources */,
 				59F8BAD629D9A4CB00E86537 /* SuperTextField.swift in Sources */,
+				592A7AA829FDD86500CFE338 /* View+.swift in Sources */,
 				59EBCE3E29D993C80074EB9D /* ContentView.swift in Sources */,
 				59EBCE5729D996970074EB9D /* String+.swift in Sources */,
+				592A7AA329FDD27C00CFE338 /* InterstitialAd.swift in Sources */,
+				592A7AAC29FDD9D700CFE338 /* AdmobHelper.swift in Sources */,
 				59CB18D829EAF5F7009FDA33 /* SettingsView.swift in Sources */,
 				59EBCE4829D993C90074EB9D /* IPassword.xcdatamodeld in Sources */,
 				59CB18D629EAEF24009FDA33 /* AlertView.swift in Sources */,
 				59F8BAD829D9A5BE00E86537 /* InputView.swift in Sources */,
+				592A7AA529FDD7FD00CFE338 /* Modifiers.swift in Sources */,
 				59EBCE4F29D9949F0074EB9D /* MainView.swift in Sources */,
 				596D627129DB7FD7003C6029 /* BaseView.swift in Sources */,
 				59EBCE3C29D993C80074EB9D /* IPasswordApp.swift in Sources */,
@@ -368,6 +406,7 @@
 				DEVELOPMENT_TEAM = NWVGLJCR5H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = IPassword/Info.plist;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "We use this to unlock the app. Important for your passwords";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -381,6 +420,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = net.faruk.IPassword;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -400,6 +440,7 @@
 				DEVELOPMENT_TEAM = NWVGLJCR5H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = IPassword/Info.plist;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "We use this to unlock the app. Important for your passwords";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -413,6 +454,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = net.faruk.IPassword;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -445,6 +487,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		592A7A9E29FDD02600CFE338 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		59CB18D229EAECF9009FDA33 /* XCRemoteSwiftPackageReference "SwipeActions" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/aheze/SwipeActions";
@@ -456,6 +506,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		592A7A9F29FDD02600CFE338 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 592A7A9E29FDD02600CFE338 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
 		59CB18D329EAECF9009FDA33 /* SwipeActions */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 59CB18D229EAECF9009FDA33 /* XCRemoteSwiftPackageReference "SwipeActions" */;

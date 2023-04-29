@@ -35,3 +35,5 @@
 "Use Face ID to log into IPassword" = "Face ID ile giriş yapmak için aktifleştirebilirsiniz";
 "Settings" = "Ayarlar";
 "Login Options" = "Giriş Seçenekleri"; 
+"Username Copied" = "Kullanıcı adı kopyalandı";
+"Password Copied" = "Şifre kopyalandı";
